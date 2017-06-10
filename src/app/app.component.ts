@@ -1,40 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
-
-export class Hero {
-  id: number;
-  name: string;
-}
-
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'App',
- template: `
+    selector: 'App',
+   template: `
   <h1>{{title}}</h1>
-  <div>
-  <label>name: </label>
-  <input [(ngModel)]="hero.name" placeholder="name">
-</div>
-  <div><label>id: </label>{{hero.id}}</div>
-  <div><label>name: </label>{{hero.name}}</div>
-  `
+  <nav>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
+`,
+   styleUrls:['./app/app.component.css']
 })
-export class AppComponent implements OnInit {
- title= 'Tour of Heroes';
- hero: Hero = {
-  id: 1,
-  name: 'Windstorm'
-};
-
-  ngOnInit(): void {
-    console.log('component initialized');
-  }
+export class AppComponent{
+    title= 'Tour of Heroes';
 }
-
-@NgModule({
-  imports: [BrowserModule],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
